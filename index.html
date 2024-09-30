@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园网络路由器</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background: linear-gradient(135deg, #007BFF, #00AFFF);
+            color: white;
+            padding: 1px 0; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: background 0.5s;
+        }
+        header:hover {
+            background: linear-gradient(135deg, #0056b3, #0099cc);
+        }
+        .cont {
+            margin: 20px auto;
+            max-width: 800px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .cont img {
+            max-width: 100%; 
+            height: auto; 
+            border-radius: 12px; 
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 800px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .container img {
+            max-width: 100%; 
+            height: auto; 
+            border-radius: 12px; 
+        }
+        .tab-container {
+            display: flex;
+            justify-content: center; 
+            flex-wrap: wrap; 
+            margin-bottom: 20px; 
+            position: relative; 
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #007BFF;
+            color: white;
+            border-radius: 12px;
+            margin: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .tab:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .underline {
+            position: absolute;
+            height: 4px;
+            background: #FFD700; 
+            border-radius: 12px;
+            transition: left 0.3s, width 0.3s;
+            bottom: -5px; 
+        }
+        .content {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2em;
+            line-height: 1.5;
+            text-align: left; 
+        }
+        .active {
+            display: block;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background: linear-gradient(135deg, #007BFF, #00AFFF);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: background 0.5s;
+        }
+        footer:hover {
+            background: linear-gradient(135deg, #0056b3, #0099cc);
+        }
+        footer p {
+            margin: 5px 0; 
+            font-size: 1.1em;
+        }
+        video {
+            width: 100%; 
+            border-radius: 12px; 
+            margin-top: 20px; 
+            display: none; /* 初始隐藏视频 */
+        }
+        .cover {
+            width: 100%;
+            border-radius: 12px; 
+            cursor: pointer; 
+            margin-top: 20px; 
+        }
+        .play-button {
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        .play-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>校园网络路由器使用图示</h1>
+</header>
+
+<div class="cont">
+	<img src="https://www.openwrt-diy.us.kg/set.png" alt="视频封面" class="cover" onclick="playVideo()">
+	<video id="video" controls muted>
+		<source src="https://www.openwrt-diy.us.kg/view.mp4" type="video/mp4">
+		您的浏览器不支持视频标签。
+	</video>
+</div>
+<button class="play-button" onclick="playVideo()">播放视频并开启声音</button>
+<div class="container">
+    <div class="tab-container">
+        <div class="tab" onclick="showContent('features', this)">主要功能</div>
+        <div class="tab" onclick="showContent('purchase', this)">购买渠道</div>
+        <div class="tab" onclick="showContent('installation', this)">安装步骤</div>
+        <div class="underline" id="underline"></div> 
+    </div>
+
+    <div id="features" class="content active">
+        <ul>
+            <li><strong>多设备</strong>：一个账号买校园网，整个宿舍都能用WiFi，省钱又省心</li></br>
+            <li><strong>扩展网</strong>：扩大校园网WIFI覆盖、扩展网线接口</li></br>
+            <li><strong>安全性</strong>：路由器的WiFi可以改名、可加密或更改密码</li></br>
+            <li><strong>防检测</strong>：防止数据泄露、被劫持、降低被检测多设备频率，上网更安全</li></br>
+            <li><strong>可升级</strong>：支持全国所有大学，长期免费提供升级固件文件</li>
+        </ul>
+    </div>
+
+    <div id="purchase" class="content">
+        <ul>
+            <li><strong>获取正品购买链接</strong>：<a href="https://qm.qq.com/q/Wep98eiCEE" target="_blank">在线QQ咨询</a></li>
+        </ul>
+    </div>
+
+    <div id="installation" class="content">
+        <ol>
+            <li><strong>验收清点货物</strong>：</br><img src="https://www.openwrt-diy.us.kg/pei.jpg" /></li>
+            <li><strong>查看安装教程</strong>：</br>扫描机身二维码，查看安装教程</li>
+        </ol>
+    </div>
+</div>
+
+<footer>
+    <p>选合适的校园网路由器，提升学习和生活质量！</p>
+</footer>
+<p>©此路由器适用于校园网、家里、公司、单位、出租屋、员工宿舍等各种网络</p>
+
+<script>
+    function showContent(contentId, tabElement) {
+        const contents = document.querySelectorAll('.content');
+        contents.forEach(content => {
+            content.classList.remove('active');
+        });
+        document.getElementById(contentId).classList.add('active');
+
+        // 动画效果
+        const underline = document.getElementById('underline');
+        const tabWidth = tabElement.offsetWidth;
+        const tabLeft = tabElement.offsetLeft;
+
+        underline.style.width = tabWidth + 'px';
+        underline.style.left = tabLeft + 'px';
+    }
+
+    function playVideo() {
+        const video = document.getElementById('video');
+        const cover = document.querySelector('.cover');
+        cover.style.display = 'none'; // 隐藏封面
+        video.style.display = 'block'; // 显示视频
+        video.muted = false; // 打开声音
+        video.play(); // 播放视频
+    }
+
+    // 初始化下划线位置
+    window.onload = function() {
+        const activeTab = document.querySelector('.tab');
+        if (activeTab) {
+            showContent('features', activeTab);
+        }
+    };
+</script>
+
+</body>
+</html>
